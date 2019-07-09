@@ -6,12 +6,22 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
+    //класс контроллера 
     public class HomeController : Controller
     {
-        // GET: Home
+        
+        /// <summary>
+        /// подключение к базе данных
+        /// </summary>
+        private Models.ShopDBEntities bd = new Models.ShopDBEntities();
+
+        // GET: /Home/
         public ActionResult Index()
         {
-            return View();
+
+            var Items = bd.Cars; //Выберем все данные из таблицы карс
+
+            return View(Items);
         }
     }
 }
